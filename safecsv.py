@@ -17,11 +17,13 @@ class Check:
                 success, err_line = check_fn(f, sep, delimiter)
 
             if success:
-                print('\033[32m{check_name} \u21E8  everything is fine \033[0m'.format(check_name=check_name))
+                print('\033[32m{check_name} \u21E8  {check_desc}\033[0m'.format(
+                    check_name=check_name, check_desc=check_fn.__doc__
+                ))
             else:                
                 print('\033[31m{check_name} \u21E8  flaw found at line {err_line}: {check_desc}\033[0m'.format(
-                    check_name=check_name, err_line=err_line, check_desc=check_fn.__doc__)
-                )
+                    check_name=check_name, err_line=err_line, check_desc=check_fn.__doc__
+                ))
                 return False  # abort testing
         
         # data are clean
