@@ -1,4 +1,5 @@
 import inspect
+import re
 
 class Check:
 
@@ -6,34 +7,42 @@ class Check:
     def full_check(cls, filename, sep=',', delimiter=None):
 
         # find all the check_ methods in this class using introspection
-        checks = [x for x in inspect.getmembers(cls, inspect.ismethod) if x[0][:6] == 'check_']
+        checks = [x for x in inspect.getmembers(cls, inspect.isfunction) if x[0][:6] == 'check_']
 
         # apply each check on the file
-        for check, function in checks:
+        for check_name, check_fn in checks:
 
             # open the file and run the check
             with open(filename, 'r') as f:
-                success, err, err_line = function(f, '', '')
+                success, err_line = check_fn(f, '', '')
 
             if success:
-                print('\033[32m{check} \u21E8  everything is fine \033[0m'.format(check=check))
+                print('\033[32m{check_name} \u21E8  everything is fine \033[0m'.format(check_name=check_name))
             else:                
-                print('\033[31m{check} \u21E8  flaw found at line {line}: {desc}\033[0m'.format(check=check, line=err_line, desc=err))
+                print('\033[31m{check_name} \u21E8  flaw found at line {err_line}: {check_desc}\033[0m'.format(
+                    check_name=check_name, err_line=err_line, check_desc=check_fn.__doc__)
+                )
                 return False  # abort testing
         
         # data are clean
         return True
 
-    @classmethod
-    def check_01(cls, file, sep, delimiteur):
-        return [True, '', 0]
+    @staticmethod
+    def check_01(file, sep, delimiter):
+        """test"""
 
-    @classmethod
-    def check_02(cls, file, sep, delimiteur):
-        return [True, '', 0]
-    
-    @classmethod
-    def check_03(cls, file, sep, delimiteur):
-        return [False, 'Blablabla', 0]
+        return [True, 0]
+
+    @staticmethod
+    def check_02(file, sep, delimiter):
+        """test"""
+
+        return [True, 0]
+
+    @staticmethod
+    def check_03(file, sep, delimiter):
+        """test"""
+
+        return [False, 0]
 
 Check.full_check('./data/test.csv')
