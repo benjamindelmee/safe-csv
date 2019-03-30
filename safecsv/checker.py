@@ -1,7 +1,7 @@
 import inspect
 import re
 
-class Check:
+class Checker:
 
     @classmethod
     def full_check(cls, filename, sep=',', delimiter=None):
@@ -70,5 +70,4 @@ class Check:
     # TODO: implements these tests and their unittest:
     # text delimiteurs present in text must be escaped
     # each line must have the same amount of columns
-
-Check.full_check('./data/test.csv')
+    
