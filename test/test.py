@@ -25,7 +25,7 @@ class Test(unittest.TestCase):
 
             # CSV with only one column
             {'filename': 'valid_02.csv', 'sep': ',' , 'delimiter': None},
-            {'filename': 'valid_02_with_quote.csv', 'sep': ',' , 'delimiter': None},
+            {'filename': 'valid_02_with_quote.csv', 'sep': ',' , 'delimiter': '"'},
 
             # CSV without data, only header
             {'filename': 'valid_03_comma.csv', 'sep': ',', 'delimiter': None},
@@ -36,6 +36,14 @@ class Test(unittest.TestCase):
             {'filename': 'valid_04_comma.csv', 'sep': ',' , 'delimiter': None},
             {'filename': 'valid_04_comma_with_quote.csv', 'sep': ',' , 'delimiter': '"'},
             {'filename': 'valid_04_tab.csv', 'sep': '\t', 'delimiter': None},
+
+            # CSV with separator inside quoted fields
+            {'filename': 'valid_05_comma_with_quote.csv', 'sep': ',' , 'delimiter': '"'},
+            {'filename': 'valid_05_tab_with_quote.csv', 'sep': '\t', 'delimiter': '"'},
+
+            # CSV with escaped quote inside quoted fields
+            {'filename': 'valid_06_comma_with_quote.csv', 'sep': ',' , 'delimiter': '"'},
+            {'filename': 'valid_06_tab_with_quote.csv', 'sep': '\t', 'delimiter': '"'},
         ]
     }
     
