@@ -47,26 +47,6 @@ class Checker:
 
         return [True, 0]
 
-    @staticmethod
-    def check_02(file, sep, quotechar):
-        """Lines must contain only printable characters"""
-
-        # apply the test on each line
-        for i, line in enumerate(file):
-
-            # remove trailing newlines
-            line = line.rstrip()
-
-            # remove tabs if they are used as separator
-            if not sep.isprintable():
-                line = line.replace(sep, '')
-
-            # search for non printable characters
-            if not line.isprintable():
-                return [False, i+1]
-
-        return [True, 0]
-
     # TODO: implements these tests and their unittest:
     # text delimiteurs present in text must be escaped
     
