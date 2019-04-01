@@ -103,10 +103,9 @@ class Test(unittest.TestCase):
     #
     
     def test_check_02_T01(self):
-        pass # TODO
-
-    def test_check_02_T02(self):
-        pass # TODO
+        with open('./data/check_02/check_02_T01.csv', 'r') as f:
+            res = Checker.check_02(f, sep=',', delimiter=None)[0]
+            self.assertEqual(res, False)
 
 if __name__ == '__main__':
     unittest.main()
