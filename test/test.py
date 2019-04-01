@@ -18,10 +18,20 @@ class Test(unittest.TestCase):
     valid_files = {
         'path': './data/valid_files',
         'files': [
-            {'filename': 'valid_01.csv', 'sep': ',', 'delimiter': None},
-            {'filename': 'valid_02.csv', 'sep': ',', 'delimiter': None},
-            {'filename': 'valid_03.csv', 'sep': ',', 'delimiter': None},
-            {'filename': 'valid_04.csv', 'sep': ',', 'delimiter': None},
+            {'filename': 'valid_01_comma.csv', 'sep': ',', 'delimiter': None},
+            {'filename': 'valid_01_comma_with_quote.csv', 'sep': ',', 'delimiter': '"'},
+            {'filename': 'valid_01_tab.csv', 'sep': '\t', 'delimiter': None},
+
+            {'filename': 'valid_02.csv', 'sep': ',' , 'delimiter': None},
+            {'filename': 'valid_02_with_quote.csv', 'sep': ',' , 'delimiter': None},
+
+            {'filename': 'valid_03_comma.csv', 'sep': ',', 'delimiter': None},
+            {'filename': 'valid_03_comma_with_quote.csv', 'sep': ',', 'delimiter': '"'},
+            {'filename': 'valid_03_tab.csv', 'sep': '\t', 'delimiter': None},
+            
+            {'filename': 'valid_04_comma.csv', 'sep': ',' , 'delimiter': None},
+            {'filename': 'valid_04_comma_with_quote.csv', 'sep': ',' , 'delimiter': '"'},
+            {'filename': 'valid_04_tab.csv', 'sep': '\t', 'delimiter': None},
         ]
     }
     
