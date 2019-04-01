@@ -47,6 +47,65 @@ class Checker:
 
         return [True, 0]
 
-    # TODO: implements these tests and their unittest:
-    # text delimiteurs present in text must be escaped
-    
+    @staticmethod
+    def check_02(file, sep, quotechar):
+        """Quoted char present in data must be escaped (doubled)"""
+        
+        for i, line in enumerate(file):
+
+            line = line.rstrip()
+
+            cur_state = 0
+
+            for char in line:
+                if cur_state == 0:
+                    if char == quotechar:
+                        cur_state = 2
+                    else:
+                        cur_state = 1
+                elif cur_state == 1:
+                    if char == quotechar:
+                        cur_state = -1
+                        break # error
+                    elif char == sep:
+                        cur_state = 0
+                    else:
+                        pass
+                elif cur_state == 2:
+                    if char == quotechar:
+                        cur_state = 3
+                    else:
+                        pass
+                elif cur_state == 3:
+                    if char == quotechar:
+                        cur_state = 4
+                    elif char == sep:
+                        cur_state = 0
+                    else:
+                        cur_state = -1
+                        break # error
+                elif cur_state == 4:
+                    if char == quotechar:
+                        cur_state = 5
+                    else:
+                        cur_state = 2
+                elif cur_state == 5:
+                    if char == quotechar:
+                        cur_state = 2
+                    elif char == sep:
+                        cur_state = 0
+                    else:
+                        cur_state = -1
+                        break # error
+            
+            if not cur_state in [0, 1, 3, 5]:
+                return [False, i+1]
+
+        return [True, cur_state]
+
+
+    # @staticmethod
+    # def check_03(file, sep, quotechar):
+    #     """Lines must have the same number of columns"""
+        
+    #     return [True, 0]
