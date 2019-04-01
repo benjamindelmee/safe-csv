@@ -58,8 +58,8 @@ class Checker:
             line = line.rstrip()
 
             # remove tabs if they are used as separator
-            if '\n' in sep:
-                line = line.replace('\n', '')
+            if not sep.isprintable():
+                line = line.replace(sep, '')
 
             # search for non printable characters
             if not line.isprintable():
