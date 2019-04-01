@@ -84,10 +84,19 @@ class Test(unittest.TestCase):
     #
     
     def test_check_01_T01(self):
-        pass # TODO
+        with open('./data/check_01/check_01_T01.csv', 'r') as f:
+            res = Checker.check_01(f, sep=',', delimiter=None)[0]
+            self.assertEqual(res, False)
 
     def test_check_01_T02(self):
-        pass # TODO
+        with open('./data/check_01/check_01_T02.csv', 'r') as f:
+            res = Checker.check_01(f, sep=',', delimiter=None)[0]
+            self.assertEqual(res, False)
+
+    def test_check_01_T03(self):
+        with open('./data/check_01/check_01_T03.csv', 'r') as f:
+            res = Checker.check_01(f, sep=',', delimiter=None)[0]
+            self.assertEqual(res, False)
 
     #
     # Tests on method check_02
