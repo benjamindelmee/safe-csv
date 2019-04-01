@@ -19,31 +19,31 @@ class Test(unittest.TestCase):
         'path': './data/valid_files',
         'files': [
             # normal CSV without eccentricity
-            {'filename': 'valid_01_comma.csv', 'sep': ',', 'delimiter': None},
-            {'filename': 'valid_01_comma_with_quote.csv', 'sep': ',', 'delimiter': '"'},
-            {'filename': 'valid_01_tab.csv', 'sep': '\t', 'delimiter': None},
+            {'filename': 'valid_01_comma.csv', 'sep': ',', 'quotechar': None},
+            {'filename': 'valid_01_comma_with_quote.csv', 'sep': ',', 'quotechar': '"'},
+            {'filename': 'valid_01_tab.csv', 'sep': '\t', 'quotechar': None},
 
             # CSV with only one column
-            {'filename': 'valid_02.csv', 'sep': ',' , 'delimiter': None},
-            {'filename': 'valid_02_with_quote.csv', 'sep': ',' , 'delimiter': '"'},
+            {'filename': 'valid_02.csv', 'sep': ',' , 'quotechar': None},
+            {'filename': 'valid_02_with_quote.csv', 'sep': ',' , 'quotechar': '"'},
 
             # CSV without data, only header
-            {'filename': 'valid_03_comma.csv', 'sep': ',', 'delimiter': None},
-            {'filename': 'valid_03_comma_with_quote.csv', 'sep': ',', 'delimiter': '"'},
-            {'filename': 'valid_03_tab.csv', 'sep': '\t', 'delimiter': None},
+            {'filename': 'valid_03_comma.csv', 'sep': ',', 'quotechar': None},
+            {'filename': 'valid_03_comma_with_quote.csv', 'sep': ',', 'quotechar': '"'},
+            {'filename': 'valid_03_tab.csv', 'sep': '\t', 'quotechar': None},
             
             # CSV with empty fields
-            {'filename': 'valid_04_comma.csv', 'sep': ',' , 'delimiter': None},
-            {'filename': 'valid_04_comma_with_quote.csv', 'sep': ',' , 'delimiter': '"'},
-            {'filename': 'valid_04_tab.csv', 'sep': '\t', 'delimiter': None},
+            {'filename': 'valid_04_comma.csv', 'sep': ',' , 'quotechar': None},
+            {'filename': 'valid_04_comma_with_quote.csv', 'sep': ',' , 'quotechar': '"'},
+            {'filename': 'valid_04_tab.csv', 'sep': '\t', 'quotechar': None},
 
             # CSV with separator inside quoted fields
-            {'filename': 'valid_05_comma_with_quote.csv', 'sep': ',' , 'delimiter': '"'},
-            {'filename': 'valid_05_tab_with_quote.csv', 'sep': '\t', 'delimiter': '"'},
+            {'filename': 'valid_05_comma_with_quote.csv', 'sep': ',' , 'quotechar': '"'},
+            {'filename': 'valid_05_tab_with_quote.csv', 'sep': '\t', 'quotechar': '"'},
 
             # CSV with escaped quote inside quoted fields
-            {'filename': 'valid_06_comma_with_quote.csv', 'sep': ',' , 'delimiter': '"'},
-            {'filename': 'valid_06_tab_with_quote.csv', 'sep': '\t', 'delimiter': '"'},
+            {'filename': 'valid_06_comma_with_quote.csv', 'sep': ',' , 'quotechar': '"'},
+            {'filename': 'valid_06_tab_with_quote.csv', 'sep': '\t', 'quotechar': '"'},
         ]
     }
     
@@ -71,10 +71,10 @@ class Test(unittest.TestCase):
                     # create a subtest for this set of parameters
                     with self.subTest(check=f_name, filename=valid_file['filename']):
                         sep = valid_file['sep']
-                        delimiter = valid_file['delimiter']
+                        quotechar = valid_file['quotechar']
 
                         # run the test
-                        res = func(file_to_test, sep=sep, delimiter=delimiter)[0]
+                        res = func(file_to_test, sep=sep, quotechar=quotechar)[0]
 
                         # assert the result
                         self.assertEqual(res, True)
@@ -85,17 +85,17 @@ class Test(unittest.TestCase):
     
     def test_check_01_T01(self):
         with open('./data/check_01/check_01_T01.csv', 'r') as f:
-            res = Checker.check_01(f, sep=',', delimiter=None)[0]
+            res = Checker.check_01(f, sep=',', quotechar=None)[0]
             self.assertEqual(res, False)
 
     def test_check_01_T02(self):
         with open('./data/check_01/check_01_T02.csv', 'r') as f:
-            res = Checker.check_01(f, sep=',', delimiter=None)[0]
+            res = Checker.check_01(f, sep=',', quotechar=None)[0]
             self.assertEqual(res, False)
 
     def test_check_01_T03(self):
         with open('./data/check_01/check_01_T03.csv', 'r') as f:
-            res = Checker.check_01(f, sep=',', delimiter=None)[0]
+            res = Checker.check_01(f, sep=',', quotechar=None)[0]
             self.assertEqual(res, False)
 
     #
@@ -104,7 +104,7 @@ class Test(unittest.TestCase):
     
     def test_check_02_T01(self):
         with open('./data/check_02/check_02_T01.csv', 'r') as f:
-            res = Checker.check_02(f, sep=',', delimiter=None)[0]
+            res = Checker.check_02(f, sep=',', quotechar=None)[0]
             self.assertEqual(res, False)
 
 if __name__ == '__main__':
