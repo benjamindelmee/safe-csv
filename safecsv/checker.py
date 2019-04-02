@@ -36,7 +36,7 @@ class Checker:
         # retrieve the header
         header = file.readline()
 
-        # remove sep, delimiteur and trailing newline
+        # remove sep, quotechar and trailing newline
         header = header.replace(sep, '').rstrip()
         if quotechar is not None:
             header = header.replace(quotechar, '')
@@ -49,7 +49,7 @@ class Checker:
 
     @staticmethod
     def check_02(file, sep, quotechar):
-        """Quoted char present in data must be escaped (doubled)"""
+        """Quotechar present in data must be escaped (doubled)"""
 
         if quotechar is None:
             # always True if the csv isn't escaped
