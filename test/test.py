@@ -117,5 +117,10 @@ class Test(unittest.TestCase):
             res = Checker.check_02(f, sep=',', quotechar='"')
             self.assertEqual(res, [False, 2])
 
+    def test_check_02_T04(self):
+        with open('./data/check_02/check_02_T04.csv', 'r') as f:
+            res = Checker.check_02(f, sep=',', quotechar='"')
+            self.assertEqual(res, [True, 0])
+
 if __name__ == '__main__':
     unittest.main()
