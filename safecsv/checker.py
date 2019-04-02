@@ -103,3 +103,81 @@ class Checker:
         else:
             return [True, 0]
 
+    @staticmethod
+    def check_03(file, sep, quotechar):
+        """Lines must have the same number of columns"""
+
+        if quotechar is None:
+
+            line = file.readline()
+            expected_nb_sep = line.count(sep)
+
+            for i, line in enumerate(file):
+
+                nb_sep = line.count(sep)
+
+                if nb_sep != expected_nb_sep:
+                    return [False, i+2]
+
+            return [True, 0]
+            
+        else:
+
+            line = file.readline()
+            expected_nb_sep = line.count(sep)
+            cur_line_nb_sep = 0
+
+            cur_state = 0
+
+            for i, line in enumerate(file):
+
+                line = line.strip('\r\n')
+
+                for char in line:
+
+                    if cur_state == 0:
+                        if char == quotechar:
+                            cur_state = 2
+                        elif char == sep:
+                            cur_line_nb_sep += 1
+                        else:
+                            cur_state = 1
+
+                    elif cur_state == 1:
+                        if char == sep:
+                            cur_state = 0
+                            cur_line_nb_sep += 1
+                        else:
+                            pass
+
+                    elif cur_state == 2:
+                        if char == quotechar:
+                            cur_state = 3
+                        else:
+                            pass
+
+                    elif cur_state == 3:
+                        if char == quotechar:
+                            cur_state = 2
+                        elif char == sep:
+                            cur_state = 0
+                            cur_line_nb_sep += 1
+                        else:
+                            return [False, i+2] # syntax error
+                        
+                # end of the line reached
+                # equivalent of reaching \n character
+                if cur_state != 2:
+                    cur_state = 0
+                    if cur_line_nb_sep != expected_nb_sep:
+                        return [False, i+2] # wrong number of columns
+                    cur_line_nb_sep = 0
+            
+            # end of the file reached
+            # equivalent of reaching EOF character
+            if cur_state == 2:
+                return [False, i+2] # syntax error
+            else:
+                return [True, 0]
+
+            return [True, 0]

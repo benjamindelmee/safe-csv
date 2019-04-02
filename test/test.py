@@ -122,5 +122,19 @@ class Test(unittest.TestCase):
             res = Checker.check_02(f, sep=',', quotechar='"')
             self.assertEqual(res, [True, 0])
 
+    #
+    # Tests on method check_03
+    #
+    
+    def test_check_03_T01(self):
+        with open('./data/check_03/check_03_T01.csv', 'r') as f:
+            res = Checker.check_03(f, sep=',', quotechar=None)
+            self.assertEqual(res, [False, 3])
+    
+    def test_check_03_T02(self):
+        with open('./data/check_03/check_03_T02.csv', 'r') as f:
+            res = Checker.check_03(f, sep=',', quotechar=None)
+            self.assertEqual(res, [False, 3])
+
 if __name__ == '__main__':
     unittest.main()
