@@ -37,7 +37,7 @@ class Checker:
         header = file.readline()
 
         # remove sep, quotechar and trailing newline
-        header = header.replace(sep, '').rstrip()
+        header = header.rstrip('\r\n').replace(sep, '')
         if quotechar is not None:
             header = header.replace(quotechar, '')
 
@@ -59,7 +59,7 @@ class Checker:
         
         for i, line in enumerate(file):
 
-            line = line.strip()
+            line = line.strip('\r\n')
 
             for char in line:
 
