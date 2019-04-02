@@ -50,62 +50,56 @@ class Checker:
     @staticmethod
     def check_02(file, sep, quotechar):
         """Quoted char present in data must be escaped (doubled)"""
+
+        if quotechar is None:
+            # always True if the csv isn't escaped
+            return [True, 0]
+
+        cur_state = 0
         
         for i, line in enumerate(file):
 
-            line = line.rstrip()
-
-            cur_state = 0
+            line = line.strip()
 
             for char in line:
+
                 if cur_state == 0:
                     if char == quotechar:
                         cur_state = 2
+                    elif char == sep:
+                        pass
                     else:
                         cur_state = 1
+
                 elif cur_state == 1:
-                    if char == quotechar:
-                        cur_state = -1
-                        break # error
-                    elif char == sep:
+                    if char == sep:
                         cur_state = 0
                     else:
                         pass
+
                 elif cur_state == 2:
                     if char == quotechar:
                         cur_state = 3
                     else:
                         pass
+
                 elif cur_state == 3:
                     if char == quotechar:
-                        cur_state = 4
-                    elif char == sep:
-                        cur_state = 0
-                    else:
-                        cur_state = -1
-                        break # error
-                elif cur_state == 4:
-                    if char == quotechar:
-                        cur_state = 5
-                    else:
-                        cur_state = 2
-                elif cur_state == 5:
-                    if char == quotechar:
                         cur_state = 2
                     elif char == sep:
                         cur_state = 0
                     else:
-                        cur_state = -1
-                        break # error
-            
-            if not cur_state in [0, 1, 3, 5]:
-                return [False, i+1]
-
-        return [True, cur_state]
-
-
-    # @staticmethod
-    # def check_03(file, sep, quotechar):
-    #     """Lines must have the same number of columns"""
+                        return [False, i+1] # syntax error
+                    
+            # end of the line reached
+            # equivalent of reaching \n character
+            if cur_state != 2:
+                cur_state = 0
         
-    #     return [True, 0]
+        # end of the file reached
+        # equivalent of reaching EOF character
+        if cur_state == 2:
+            return [False, i+1] # syntax error
+        else:
+            return [True, 0]
+
