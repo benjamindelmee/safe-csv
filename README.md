@@ -20,7 +20,7 @@ Take care, **only the structure is assessed, not the data themselves (that's dat
   id,family name,prénom  # wrong header
   1,Torvalds,Linus
   2,Wozniak,Steve
-  
+
   id,family_name,prenom  # correct header
   1,Torvalds,Linus
   2,Wozniak,Steve
@@ -64,12 +64,12 @@ sudo apt-get install git
 
 ### Installing
 
-**Automatic installation (recommended for projects)**
+#### Automatic installation (recommended for projects)
 
 Add the following line to your `requirements.txt` file
 
 ```
-git+ssh://git@github.com/benjamindelmee/SafeCSV.git
+-e git+ssh://git@github.com/benjamindelmee/SafeCSV.git#egg=safecsv
 ```
 
 And then install the new requirements
@@ -78,7 +78,7 @@ And then install the new requirements
 python -m pip install -r requirements.txt
 ```
 
-**Manual installation**
+#### Manual installation
 
 ```bash
 # clone the repository
