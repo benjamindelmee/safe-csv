@@ -74,6 +74,8 @@ class Checker:
                 elif cur_state == 1:
                     if char == sep:
                         cur_state = 0
+                    elif char == quotechar:
+                        return [False, i+1] # syntax error
                     else:
                         pass
 
@@ -147,6 +149,8 @@ class Checker:
                         if char == sep:
                             cur_state = 0
                             cur_line_nb_sep += 1
+                        elif char == quotechar:
+                            return [False, i+1] # syntax error
                         else:
                             pass
 

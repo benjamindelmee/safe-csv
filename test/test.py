@@ -110,6 +110,11 @@ class Test(unittest.TestCase):
         with open('./data/check_02/check_02_T04.csv', 'r') as f:
             res = Checker.check_02(f, sep=',', quotechar='"')
             self.assertEqual(res, [True, 0])
+    
+    def test_check_02_T05(self):
+        with open('./data/check_02/check_02_T05.csv', 'r') as f:
+            res = Checker.check_02(f, sep=',', quotechar='"')
+            self.assertEqual(res, [False, 2])
 
     #
     # Tests on method check_03
