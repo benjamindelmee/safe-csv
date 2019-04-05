@@ -58,11 +58,33 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-TODO
+Install the following dependencies
+- python 3
+- git
 
 ### Installing
 
-TODO
+1. Clone this repository on your machine
+
+2. Run the tests
+
+  ```bash
+  cd tests/
+  
+  python3 tests.py
+  ```
+  
+  *Excpected output (number of tests may vary)*
+  
+  ```
+  $> python3 test.py 
+  ..........
+  ----------------------------------------------------------------------
+  Ran 10 tests in 0.003s
+
+  OK
+  ```
+3. Done
 
 ## Usage
 
@@ -70,4 +92,4 @@ TODO
 
 # TODO
 
-- Write the todo list
+- Create installation package
