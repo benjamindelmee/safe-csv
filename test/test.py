@@ -1,17 +1,6 @@
-def update_pypath():
-    """add safecsv to the python import path"""
-    import sys, os
-    # find the absolute path of the test directory
-    cur_dir = os.path.dirname(os.path.realpath(__file__))
-    # add the above directory to the python path
-    sys.path.append('{}/..'.format(cur_dir))
-    # import our custom library
-    
-update_pypath()
-
 import unittest
 import inspect
-from safecsv.checker import Checker
+from safecsv import Checker
 
 class Test(unittest.TestCase):
 

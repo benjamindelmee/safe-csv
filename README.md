@@ -8,7 +8,7 @@ Take care, **only the structure is assessed, not the data themselves (that's dat
 
 **Currently, the following tests are implemented:**
 
-*If you think there is a scenario leading to an error during the integration but not covered in these tests, please feel free to submit a new test to enhance this script.*
+*If you find a scenario leading to an error during the integration but not covered in these tests, please feel free to submit a new test to enhance this script.*
 
 - **Check 01**: Header must contain only letters, numbers or underscores
   
@@ -20,7 +20,7 @@ Take care, **only the structure is assessed, not the data themselves (that's dat
   id,family name,prénom  # wrong header
   1,Torvalds,Linus
   2,Wozniak,Steve
- 
+  
   id,family_name,prenom  # correct header
   1,Torvalds,Linus
   2,Wozniak,Steve
@@ -58,38 +58,37 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-Install the following dependencies
-- python 3
-- git
+```bash
+sudo apt-get install git
+```
 
 ### Installing
 
-1. Clone this repository on your machine
+**Automatic installation (recommended for projects)**
 
-2. Run the tests
+Add the following line to your `requirements.txt` file
 
-  ```bash
-  cd tests/
-  
-  python3 tests.py
-  ```
-  
-  *Excpected output (number of tests may vary)*
-  
-  ```
-  $> python3 test.py 
-  ..........
-  ----------------------------------------------------------------------
-  Ran 10 tests in 0.003s
+```
+git+ssh://git@github.com/benjamindelmee/SafeCSV.git
+```
 
-  OK
-  ```
-3. Done
+And then install the new requirements
+
+```
+python -m pip install -r requirements.txt
+```
+
+**Manual installation**
+
+```bash
+# clone the repository
+git clone
+cd safecsv/
+
+# install the module into your environment
+pip install -e .
+```
 
 ## Usage
 
 TODO
-
-# TODO
-
-- Create installation package
