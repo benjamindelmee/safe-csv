@@ -64,7 +64,7 @@ sudo apt-get install git
 
 ### Installing
 
-#### Automatic installation (recommended for projects)
+#### Automatic installation (recommended when integrated in other projects)
 
 Add the following line to your `requirements.txt` file
 
@@ -78,7 +78,7 @@ And then install the new requirements
 python -m pip install -r requirements.txt
 ```
 
-#### Manual installation
+#### Manual installation (recommended for development)
 
 ```bash
 # clone the repository
