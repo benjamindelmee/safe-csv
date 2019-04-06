@@ -77,14 +77,29 @@ class Test(unittest.TestCase):
             res = Checker.check_01(f, sep=',', quotechar=None)[0]
             self.assertEqual(res, False)
 
+    def test_check_01_T01_tab(self):
+        with open('./data/check_01/check_01_T01_tab.csv', 'r') as f:
+            res = Checker.check_01(f, sep='\t', quotechar=None)[0]
+            self.assertEqual(res, False)
+
     def test_check_01_T02(self):
         with open('./data/check_01/check_01_T02.csv', 'r') as f:
             res = Checker.check_01(f, sep=',', quotechar=None)[0]
             self.assertEqual(res, False)
 
+    def test_check_01_T02_tab(self):
+        with open('./data/check_01/check_01_T02_tab.csv', 'r') as f:
+            res = Checker.check_01(f, sep='\t', quotechar=None)[0]
+            self.assertEqual(res, False)
+
     def test_check_01_T03(self):
         with open('./data/check_01/check_01_T03.csv', 'r') as f:
             res = Checker.check_01(f, sep=',', quotechar=None)[0]
+            self.assertEqual(res, False)
+    
+    def test_check_01_T03_tab(self):
+        with open('./data/check_01/check_01_T03_tab.csv', 'r') as f:
+            res = Checker.check_01(f, sep='\t', quotechar=None)[0]
             self.assertEqual(res, False)
 
     #
@@ -96,14 +111,29 @@ class Test(unittest.TestCase):
             res = Checker.check_02(f, sep=',', quotechar='"')
             self.assertEqual(res, [False, 2])
     
+    def test_check_02_T01_tab(self):
+        with open('./data/check_02/check_02_T01_tab.csv', 'r') as f:
+            res = Checker.check_02(f, sep='\t', quotechar='"')
+            self.assertEqual(res, [False, 2])
+    
     def test_check_02_T02(self):
         with open('./data/check_02/check_02_T02.csv', 'r') as f:
             res = Checker.check_02(f, sep=',', quotechar='"')
             self.assertEqual(res, [False, 2])
     
+    def test_check_02_T02_tab(self):
+        with open('./data/check_02/check_02_T02_tab.csv', 'r') as f:
+            res = Checker.check_02(f, sep='\t', quotechar='"')
+            self.assertEqual(res, [False, 2])
+    
     def test_check_02_T03(self):
         with open('./data/check_02/check_02_T03.csv', 'r') as f:
             res = Checker.check_02(f, sep=',', quotechar='"')
+            self.assertEqual(res, [False, 2])
+    
+    def test_check_02_T03_tab(self):
+        with open('./data/check_02/check_02_T03_tab.csv', 'r') as f:
+            res = Checker.check_02(f, sep='\t', quotechar='"')
             self.assertEqual(res, [False, 2])
 
     def test_check_02_T04(self):
@@ -111,9 +141,19 @@ class Test(unittest.TestCase):
             res = Checker.check_02(f, sep=',', quotechar='"')
             self.assertEqual(res, [True, 0])
     
+    def test_check_02_T04_tab(self):
+        with open('./data/check_02/check_02_T04_tab.csv', 'r') as f:
+            res = Checker.check_02(f, sep='\t', quotechar='"')
+            self.assertEqual(res, [True, 0])
+    
     def test_check_02_T05(self):
         with open('./data/check_02/check_02_T05.csv', 'r') as f:
             res = Checker.check_02(f, sep=',', quotechar='"')
+            self.assertEqual(res, [False, 2])
+
+    def test_check_02_T05_tab(self):
+        with open('./data/check_02/check_02_T05_tab.csv', 'r') as f:
+            res = Checker.check_02(f, sep='\t', quotechar='"')
             self.assertEqual(res, [False, 2])
 
     #
@@ -124,10 +164,20 @@ class Test(unittest.TestCase):
         with open('./data/check_03/check_03_T01.csv', 'r') as f:
             res = Checker.check_03(f, sep=',', quotechar=None)
             self.assertEqual(res, [False, 3])
+
+    def test_check_03_T01_tab(self):
+        with open('./data/check_03/check_03_T01_tab.csv', 'r') as f:
+            res = Checker.check_03(f, sep='\t', quotechar=None)
+            self.assertEqual(res, [False, 3])
     
     def test_check_03_T02(self):
         with open('./data/check_03/check_03_T02.csv', 'r') as f:
             res = Checker.check_03(f, sep=',', quotechar=None)
+            self.assertEqual(res, [False, 3])
+    
+    def test_check_03_T02_tab(self):
+        with open('./data/check_03/check_03_T02_tab.csv', 'r') as f:
+            res = Checker.check_03(f, sep='\t', quotechar=None)
             self.assertEqual(res, [False, 3])
 
 if __name__ == '__main__':
