@@ -180,5 +180,25 @@ class Test(unittest.TestCase):
             res = Checker.check_03(f, sep='\t', quotechar=None)
             self.assertEqual(res, [False, 3])
 
+    def test_check_03_T03(self):
+        with open('./data/check_03/check_03_T03.csv', 'r') as f:
+            res = Checker.check_03(f, sep=',', quotechar=None)
+            self.assertEqual(res, [False, 3])
+    
+    def test_check_03_T03_tab(self):
+        with open('./data/check_03/check_03_T03_tab.csv', 'r') as f:
+            res = Checker.check_03(f, sep='\t', quotechar=None)
+            self.assertEqual(res, [False, 3])
+    
+    def test_check_03_T03_with_quote(self):
+        with open('./data/check_03/check_03_T03_with_quote.csv', 'r') as f:
+            res = Checker.check_03(f, sep=',', quotechar='"')
+            self.assertEqual(res, [True, 0])
+    
+    def test_check_03_T03_tab_with_quote(self):
+        with open('./data/check_03/check_03_T03_tab_with_quote.csv', 'r') as f:
+            res = Checker.check_03(f, sep='\t', quotechar='"')
+            self.assertEqual(res, [True, 0])
+
 if __name__ == '__main__':
     unittest.main()
