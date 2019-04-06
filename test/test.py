@@ -8,8 +8,8 @@ class Test(unittest.TestCase):
         'path': './data/valid_files',
         'files': [
             # normal CSV without eccentricity
-            {'filename': 'valid_01_comma.csv', 'sep': ',', 'quotechar': None},
-            {'filename': 'valid_01_comma_with_quote.csv', 'sep': ',', 'quotechar': '"'},
+            {'filename': 'valid_01.csv', 'sep': ',', 'quotechar': None},
+            {'filename': 'valid_01_with_quote.csv', 'sep': ',', 'quotechar': '"'},
             {'filename': 'valid_01_tab.csv', 'sep': '\t', 'quotechar': None},
 
             # CSV with only one column
@@ -17,21 +17,21 @@ class Test(unittest.TestCase):
             {'filename': 'valid_02_with_quote.csv', 'sep': ',' , 'quotechar': '"'},
 
             # CSV without data, only header
-            {'filename': 'valid_03_comma.csv', 'sep': ',', 'quotechar': None},
-            {'filename': 'valid_03_comma_with_quote.csv', 'sep': ',', 'quotechar': '"'},
+            {'filename': 'valid_03.csv', 'sep': ',', 'quotechar': None},
+            {'filename': 'valid_03_with_quote.csv', 'sep': ',', 'quotechar': '"'},
             {'filename': 'valid_03_tab.csv', 'sep': '\t', 'quotechar': None},
             
             # CSV with empty fields
-            {'filename': 'valid_04_comma.csv', 'sep': ',' , 'quotechar': None},
-            {'filename': 'valid_04_comma_with_quote.csv', 'sep': ',' , 'quotechar': '"'},
+            {'filename': 'valid_04.csv', 'sep': ',' , 'quotechar': None},
+            {'filename': 'valid_04_with_quote.csv', 'sep': ',' , 'quotechar': '"'},
             {'filename': 'valid_04_tab.csv', 'sep': '\t', 'quotechar': None},
 
             # CSV with separator inside quoted fields
-            {'filename': 'valid_05_comma_with_quote.csv', 'sep': ',' , 'quotechar': '"'},
+            {'filename': 'valid_05_with_quote.csv', 'sep': ',' , 'quotechar': '"'},
             {'filename': 'valid_05_tab_with_quote.csv', 'sep': '\t', 'quotechar': '"'},
 
             # CSV with escaped quote inside quoted fields
-            {'filename': 'valid_06_comma_with_quote.csv', 'sep': ',' , 'quotechar': '"'},
+            {'filename': 'valid_06_with_quote.csv', 'sep': ',' , 'quotechar': '"'},
             {'filename': 'valid_06_tab_with_quote.csv', 'sep': '\t', 'quotechar': '"'},
         ]
     }
