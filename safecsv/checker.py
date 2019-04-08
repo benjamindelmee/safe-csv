@@ -4,7 +4,7 @@ import re
 class Checker:
 
     @classmethod
-    def full_check(cls, filename, sep=',', quotechar=None):
+    def full_check(cls, filename, sep=',', quotechar=None, encoding='utf-8'):
 
         # find all the check_ methods in this class using introspection
         checks = [x for x in inspect.getmembers(cls, inspect.isfunction) if x[0][:6] == 'check_']
@@ -13,7 +13,7 @@ class Checker:
         for check_name, check_fn in checks:
 
             # open the file and run the check
-            with open(filename, 'r') as f:
+            with open(filename, 'r', encoding=encoding) as f:
                 success, err_line = check_fn(f, sep, quotechar)
 
             if success:
