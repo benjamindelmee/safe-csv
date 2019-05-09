@@ -9,6 +9,10 @@ class Checker:
         # find all the check_ methods in this class using introspection
         checks = [x for x in inspect.getmembers(cls, inspect.isfunction) if x[0][:6] == 'check_']
 
+        # display the name of the stream (if any)
+        if hasattr(stream, 'name'):
+            print('\033[34mStream: {name}\033[0m'.format(name=stream.name))
+
         # apply each check on the stream
         for check_name, check_fn in checks:
 
