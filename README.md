@@ -94,7 +94,8 @@ pip install -e .
 ```python
 from safecsv import Checker
 
-valid = Checker.full_check('data.csv', sep=',', quotechar='"')
+with open('data.csv', 'r') as file_stream:
+    valid = Checker.full_check(file_stream, sep=',', quotechar='"')
 
 if valid:
     # load data.csv with pandas
