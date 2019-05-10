@@ -1,4 +1,4 @@
-# SafeCSV
+# ![SafeCSV](misc/safe_csv.png)
 
 The purpose of this script is to make **data integration** more reliable.
 
