@@ -64,7 +64,7 @@ First, install SafeCSV into your python environment:
 python -m pip install git+https://github.com/benjamindelmee/safe-csv
 ```
 
-## Usage
+### Usage
 
 ```python
 from safecsv import Checker
