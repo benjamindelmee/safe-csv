@@ -56,37 +56,12 @@ Take care, **only the structure is assessed, not the data themselves (that's dat
 
 These instructions will get you a copy of the project up and running on your local machine.
 
-### Prerequisites
-
-```bash
-sudo apt-get install git
-```
-
 ### Installing
 
-#### Automatic installation (recommended when integrated in other projects)
-
-Add the following line to your `requirements.txt` file
-
-```
--e git+ssh://git@github.com/benjamindelmee/SafeCSV.git#egg=safecsv
-```
-
-And then install the new requirements
-
-```
-python -m pip install -r requirements.txt
-```
-
-#### Manual installation (recommended for development)
+First, install SafeCSV into your python environment:
 
 ```bash
-# clone the repository
-git clone
-cd safecsv/
-
-# install the module into your environment
-pip install -e .
+python -m pip install git+https://github.com/benjamindelmee/safe-csv
 ```
 
 ## Usage
