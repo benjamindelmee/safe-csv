@@ -27,7 +27,11 @@ python -m pip install git+https://github.com/benjamindelmee/safe-csv
 ```python
 from safecsv import Checker
 
+# open the CSV file you want to perform tests on
 with open('data.csv', 'r') as file_stream:
+    
+    # performs all the tests
+    # (you can also specify tests="core" or tests="extended")
     valid = Checker.full_check(file_stream, sep=',', quotechar='"')
 
 if valid:

@@ -5,6 +5,29 @@ class Checker:
 
     @classmethod
     def full_check(cls, stream, sep=',', quotechar=None, tests='all'):
+        """Perform all the tests on the stream.
+
+        Parameters
+        ----------
+        stream : file object
+            An file-like object made of characters. It must suport call
+            to the .seek() method.
+        
+        sep : char, optional
+            The character to be considered as the columns separator.
+            Default is , (comma).
+
+        quotechar : char, optional
+            The character to be considered as the text encloser.
+            Default is " (quote).
+
+        tests : {'core', 'extended', 'all'}, optional
+            Sets the type of tests to be performed on the stream. It can
+            either be 'core' to perform only the core tests, either
+            'extended' for the extended tests or either 'all' for both
+            the core and extended tests.
+            Default is 'all'.
+        """
 
         # find all the check_ methods in this class using introspection
         checks = list()
