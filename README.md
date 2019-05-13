@@ -1,12 +1,10 @@
 # ![SafeCSV](misc/safe_csv.png)
 
-This script assesses if a CSV file is conform to the [RFC4180](https://tools.ietf.org/html/rfc4180).
-
-It helps people dealing with **CSV generation** to ensure that their output is valid. It also helps people dealing with **data integration** to assess the validity of CSV files provided by third parties.
+This script helps to assess the quality of CSV files.
 
 Tests performed by this script can be split in two categories:
-- **Core tests:** assess if a file is conform to the RFC4180
-- **Extended tests:** asses if a file follows some empirical good practices (like column naming convention)
+- **Core tests:** assess if a CSV file is conform to the [RFC4180](https://tools.ietf.org/html/rfc4180)
+- **Extended tests:** assess if a CSV file follows some empirical good practices (like column naming convention)
  
 For more information about the tests performed, please read the [tests documentation](doc/tests.md).
 
