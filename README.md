@@ -35,5 +35,26 @@ with open('data.csv', 'r') as file_stream:
     valid = Checker.full_check(file_stream, sep=',', quotechar='"')
 
 if valid:
-    # load data.csv with pandas
+    print('Success!')
+else:
+	print('Error!')
+```
+
+*output example (for a valid file):*
+
+```
+Stream: data.csv
+check_core_01 ⇨ Quotechar present in data must be escaped (doubled)
+check_core_02 ⇨ Lines must have the same number of columns
+check_extd_01 ⇨ Header must contain only letters, numbers or underscores
+Success!
+```
+
+*output example (for an invalid file):*
+
+```
+Stream: data.csv
+check_core_01 ⇨ Quotechar present in data must be escaped (doubled)
+check_core_02 ⇨ flaw found at line 8: Lines must have the same number of columns
+Error!
 ```
