@@ -37,7 +37,7 @@ with open('data.csv', 'r') as file_stream:
 if valid:
     print('Success!')
 else:
-	print('Error!')
+    print('Error!')
 ```
 
 *output example (for a valid file):*
