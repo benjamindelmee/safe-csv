@@ -52,4 +52,22 @@ In order to implement core tests, the grammar described in the RFC was implement
   1,Torvalds,Linus
   2,Wozniak,Steve
   ```
+
+- **Extended check 02**: Column names must be unique
   
+  Example:
+  
+  ```
+  name,phone,phone  # wrong header
+  Musk,123456789,123456789
+
+  name,phone_1,phone_2  # correct header
+  Musk,123456789,123456789
+  ```
+
+  *note: this test doesn't take into account column names with line break inside*
+
+  ```
+  "name","phone \n 1","phone \n 1"  # wrong header but not detected
+  Musk,123456789,123456789
+  ```

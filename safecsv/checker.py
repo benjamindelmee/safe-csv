@@ -220,3 +220,39 @@ class Checker:
             return [False, 0]
 
         return [True, 0]
+
+    @staticmethod
+    def check_extd_02(stream, sep, quotechar):
+        """Column names must be unique"""
+
+        # retrieve the header
+        header = stream.readline()
+
+        # get a list of the fields
+        fields = Checker._get_fields(header, sep, quotechar)
+
+        # test if the elements of the list are unique
+        if len(set(fields)) != len(fields):
+            return [False, 0]
+
+        return [True, 0]
+
+    @staticmethod
+    def _get_fields(line, sep, quotechar):
+        """Return a list of the fields in the line"""
+
+        # remove trailing newline charactere
+        line = list(line.rstrip('\r\n'))
+        
+        # remove the sep in the fields to avoid using wrong sep
+        # while spitting
+        if quotechar is not None:
+            in_field = False
+            for i, car in enumerate(line):
+                if car == quotechar:
+                    in_field = not in_field
+                elif car == sep:
+                    if in_field:
+                        line[i] = ''
+
+        return "".join(line).split(sep)

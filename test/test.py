@@ -199,6 +199,30 @@ class Test(unittest.TestCase):
         with open('./data/check_extd_01/check_extd_01_T03_tab.csv', 'r') as f:
             res = Checker.check_extd_01(f, sep='\t', quotechar=None)[0]
             self.assertEqual(res, False)
+
+    #
+    # Tests on method check_extd_02
+    #
+    
+    def test_check_extd_02_T01(self):
+        with open('./data/check_extd_02/check_extd_02_T01.csv', 'r') as f:
+            res = Checker.check_extd_02(f, sep=',', quotechar=None)[0]
+            self.assertEqual(res, False)
+
+    def test_check_extd_02_T01_tab(self):
+        with open('./data/check_extd_02/check_extd_02_T01_tab.csv', 'r') as f:
+            res = Checker.check_extd_02(f, sep='\t', quotechar=None)[0]
+            self.assertEqual(res, False)
+
+    def test_check_extd_02_T02(self):
+        with open('./data/check_extd_02/check_extd_02_T02.csv', 'r') as f:
+            res = Checker.check_extd_02(f, sep=',', quotechar='"')[0]
+            self.assertEqual(res, False)
+
+    def test_check_extd_02_T02_tab(self):
+        with open('./data/check_extd_02/check_extd_02_T02_tab.csv', 'r') as f:
+            res = Checker.check_extd_02(f, sep='\t', quotechar='"')[0]
+            self.assertEqual(res, False)
             
 if __name__ == '__main__':
     unittest.main()
