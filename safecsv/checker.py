@@ -4,10 +4,16 @@ import re
 class Checker:
 
     @classmethod
-    def full_check(cls, stream, sep=',', quotechar=None):
+    def full_check(cls, stream, sep=',', quotechar=None, tests='all'):
 
         # find all the check_ methods in this class using introspection
-        checks = [x for x in inspect.getmembers(cls, inspect.isfunction) if x[0][:6] == 'check_']
+        checks = list()
+        if tests.lower() in ('all', 'core'):
+            # find all the "core" tests
+            checks += [x for x in inspect.getmembers(cls, inspect.isfunction) if x[0][:11] == 'check_core_']
+        if tests.lower() in ('all', 'extended'):
+            # find all the "extended" tests
+            checks += [x for x in inspect.getmembers(cls, inspect.isfunction) if x[0][:11] == 'check_extd_']
 
         # display the name of the stream (if any)
         if hasattr(stream, 'name'):
@@ -36,25 +42,7 @@ class Checker:
         return True
 
     @staticmethod
-    def check_01(stream, sep, quotechar):
-        """Header must contain only letters, numbers or underscores"""
-
-        # retrieve the header
-        header = stream.readline()
-
-        # remove sep, quotechar and trailing newline
-        header = header.rstrip('\r\n').replace(sep, '')
-        if quotechar is not None:
-            header = header.replace(quotechar, '')
-
-        # search for forbidden characters
-        if re.search('[^a-zA-Z0-9_]', header):
-            return [False, 0]
-
-        return [True, 0]
-
-    @staticmethod
-    def check_02(stream, sep, quotechar):
+    def check_core_01(stream, sep, quotechar):
         """Quotechar present in data must be escaped (doubled)"""
 
         if quotechar is None:
@@ -112,7 +100,7 @@ class Checker:
             return [True, 0]
 
     @staticmethod
-    def check_03(stream, sep, quotechar):
+    def check_core_02(stream, sep, quotechar):
         """Lines must have the same number of columns"""
 
         if quotechar is None:
@@ -191,3 +179,21 @@ class Checker:
                 return [True, 0]
 
             return [True, 0]
+
+    @staticmethod
+    def check_extd_01(stream, sep, quotechar):
+        """Header must contain only letters, numbers or underscores"""
+
+        # retrieve the header
+        header = stream.readline()
+
+        # remove sep, quotechar and trailing newline
+        header = header.rstrip('\r\n').replace(sep, '')
+        if quotechar is not None:
+            header = header.replace(quotechar, '')
+
+        # search for forbidden characters
+        if re.search('[^a-zA-Z0-9_]', header):
+            return [False, 0]
+
+        return [True, 0]
