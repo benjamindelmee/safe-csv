@@ -19,7 +19,7 @@ class Checker:
 
         quotechar : char, optional
             The character to be considered as the text encloser.
-            Default is " (quote).
+            Default is None.
 
         tests : {'core', 'extended', 'all'}, optional
             Sets the type of tests to be performed on the stream. It can
