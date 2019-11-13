@@ -2,6 +2,7 @@ import unittest
 import inspect
 from safecsv import Checker
 
+
 class Test(unittest.TestCase):
 
     valid_files = {
@@ -13,8 +14,8 @@ class Test(unittest.TestCase):
             {'filename': 'valid_01_tab.csv', 'sep': '\t', 'quotechar': None},
 
             # CSV with only one column
-            {'filename': 'valid_02.csv', 'sep': ',' , 'quotechar': None},
-            {'filename': 'valid_02_with_quote.csv', 'sep': ',' , 'quotechar': '"'},
+            {'filename': 'valid_02.csv', 'sep': ',', 'quotechar': None},
+            {'filename': 'valid_02_with_quote.csv', 'sep': ',', 'quotechar': '"'},
 
             # CSV without data, only header
             {'filename': 'valid_03.csv', 'sep': ',', 'quotechar': None},
@@ -22,16 +23,16 @@ class Test(unittest.TestCase):
             {'filename': 'valid_03_tab.csv', 'sep': '\t', 'quotechar': None},
             
             # CSV with empty fields
-            {'filename': 'valid_04.csv', 'sep': ',' , 'quotechar': None},
-            {'filename': 'valid_04_with_quote.csv', 'sep': ',' , 'quotechar': '"'},
+            {'filename': 'valid_04.csv', 'sep': ',', 'quotechar': None},
+            {'filename': 'valid_04_with_quote.csv', 'sep': ',', 'quotechar': '"'},
             {'filename': 'valid_04_tab.csv', 'sep': '\t', 'quotechar': None},
 
             # CSV with separator inside quoted fields
-            {'filename': 'valid_05_with_quote.csv', 'sep': ',' , 'quotechar': '"'},
+            {'filename': 'valid_05_with_quote.csv', 'sep': ',', 'quotechar': '"'},
             {'filename': 'valid_05_tab_with_quote.csv', 'sep': '\t', 'quotechar': '"'},
 
             # CSV with escaped quote inside quoted fields
-            {'filename': 'valid_06_with_quote.csv', 'sep': ',' , 'quotechar': '"'},
+            {'filename': 'valid_06_with_quote.csv', 'sep': ',', 'quotechar': '"'},
             {'filename': 'valid_06_tab_with_quote.csv', 'sep': '\t', 'quotechar': '"'},
         ]
     }
@@ -224,5 +225,6 @@ class Test(unittest.TestCase):
             res = Checker.check_extd_02(f, sep='\t', quotechar='"')[0]
             self.assertEqual(res, False)
             
+
 if __name__ == '__main__':
     unittest.main()

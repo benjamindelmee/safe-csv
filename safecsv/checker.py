@@ -1,6 +1,7 @@
 import inspect
 import re
 
+
 class Checker:
 
     @classmethod
@@ -92,7 +93,7 @@ class Checker:
                     if char == sep:
                         cur_state = 0
                     elif char == quotechar:
-                        return [False, i+1] # syntax error
+                        return [False, i + 1]  # syntax error
                     else:
                         pass
 
@@ -108,7 +109,7 @@ class Checker:
                     elif char == sep:
                         cur_state = 0
                     else:
-                        return [False, i+1] # syntax error
+                        return [False, i + 1]  # syntax error
                     
             # end of the line reached
             # equivalent of reaching \n character
@@ -118,7 +119,7 @@ class Checker:
         # end of the stream reached
         # equivalent of reaching EOF character
         if cur_state == 2:
-            return [False, i+1] # syntax error
+            return [False, i + 1]  # syntax error
         else:
             return [True, 0]
 
@@ -136,7 +137,7 @@ class Checker:
                 nb_sep = line.count(sep)
 
                 if nb_sep != expected_nb_sep:
-                    return [False, i+2]
+                    return [False, i + 2]
 
             return [True, 0]
             
@@ -167,7 +168,7 @@ class Checker:
                             cur_state = 0
                             cur_line_nb_sep += 1
                         elif char == quotechar:
-                            return [False, i+1] # syntax error
+                            return [False, i + 1]  # syntax error
                         else:
                             pass
 
@@ -184,20 +185,20 @@ class Checker:
                             cur_state = 0
                             cur_line_nb_sep += 1
                         else:
-                            return [False, i+2] # syntax error
+                            return [False, i + 2]  # syntax error
                         
                 # end of the line reached
                 # equivalent of reaching \n character
                 if cur_state != 2:
                     cur_state = 0
                     if cur_line_nb_sep != expected_nb_sep:
-                        return [False, i+2] # wrong number of columns
+                        return [False, i + 2]  # wrong number of columns
                     cur_line_nb_sep = 0
             
             # end of the stream reached
             # equivalent of reaching EOF character
             if cur_state == 2:
-                return [False, i+2] # syntax error
+                return [False, i + 2]  # syntax error
             else:
                 return [True, 0]
 
